@@ -33,24 +33,16 @@ async function initializeStripe() {
     return;
   }
 
-  // Get Stripe public key from meta tag or use environment variable
-  const metaTag = document.querySelector('meta[name="stripe-public-key"]');
-  let stripeKey = metaTag ? metaTag.content : null;
-  
-  // If no key found, try to fetch from server
-  if (!stripeKey) {
-    try {
-      const response = await fetch('/api/get-stripe-key');
-      const data = await response.json();
-      stripeKey = data.publicKey;
-    } catch (error) {
-      console.warn('Could not fetch Stripe key from server');
-    }
-  }
-
-  // Fallback: check if STRIPE_PUBLIC_KEY is available globally
-  if (!stripeKey && typeof STRIPE_PUBLIC_KEY !== 'undefined' && STRIPE_PUBLIC_KEY !== 'STRIPE_PUBLIC_KEY') {
-    stripeKey = STRIPE_PUBLIC_KEY;
+  let stripeKey;
+  try {
+    const response = await fetch('/api/get-stripe-key');
+    const data = await response.json();
+    console.log('CLIENT: Full response from /api/get-stripe-key:', JSON.stringify(data, null, 2));
+    stripeKey = data.publicKey;
+  } catch (error) {
+    console.error('Could not fetch Stripe key from server:', error);
+    showToast('Error connecting to payment services. Please try again later.', 'error');
+    return;
   }
 
   if (!stripeKey) {
