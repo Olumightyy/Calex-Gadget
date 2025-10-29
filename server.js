@@ -1,7 +1,6 @@
 const express = require('express');
 const Stripe = require('stripe');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
 
@@ -49,13 +48,6 @@ app.use(express.static('.', {
 }));
 
 // API Routes
-
-// Get Stripe public key
-app.get('/api/get-stripe-key', (req, res) => {
-  const publicKey = process.env.STRIPE_PUBLIC_KEY || '';
-  console.log('API: /api/get-stripe-key - Public Key Requested:', publicKey ? `${publicKey.substring(0, 10)}...` : 'Not Found');
-  res.json({ publicKey });
-});
 
 // Create payment intent
 app.post('/api/create-payment-intent', async (req, res) => {
@@ -159,14 +151,6 @@ app.use((req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Calex Electronics Hub server running at http://0.0.0.0:${PORT}/`);
-
-  // Diagnostic logging for Stripe keys
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  const publicKey = process.env.STRIPE_PUBLIC_KEY;
-  console.log('SERVER START: Checking Stripe Keys...');
-  console.log('  - STRIPE_SECRET_KEY:', secretKey ? `Loaded (${secretKey.substring(0, 10)}...)` : 'MISSING');
-  console.log('  - STRIPE_PUBLIC_KEY:', publicKey ? `Loaded (${publicKey.substring(0, 10)}...)` : 'MISSING');
-
   if (stripe) {
     console.log('✅ Stripe payment processing enabled');
   } else {
