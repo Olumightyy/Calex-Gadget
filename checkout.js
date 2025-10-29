@@ -33,25 +33,14 @@ async function initializeStripe() {
     return;
   }
 
-  let stripeKey;
-  try {
-    const response = await fetch('/api/get-stripe-key');
-    const data = await response.json();
-    console.log('CLIENT: Full response from /api/get-stripe-key:', JSON.stringify(data, null, 2));
-    stripeKey = data.publicKey;
-  } catch (error) {
-    console.error('Could not fetch Stripe key from server:', error);
-    showToast('Error connecting to payment services. Please try again later.', 'error');
-    return;
-  }
+  const stripeKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 
   if (!stripeKey) {
-    console.error('Stripe public key not found.');
     showToast('Payment system not configured. Please contact support.', 'error');
+    console.error('Stripe public key is not set. Make sure to set VITE_STRIPE_PUBLIC_KEY in your environment.');
     return;
   }
 
-  console.log('Using Stripe public key:', stripeKey);
   stripe = Stripe(stripeKey);
 
   try {
