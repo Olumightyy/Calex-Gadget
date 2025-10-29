@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed - Calex Electronics Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    @keyframes checkmark {
+      0% {
+        stroke-dashoffset: 100;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+    .checkmark-circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      animation: checkmark 0.6s ease-in-out 0.3s forwards;
+    }
+    .checkmark-check {
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: checkmark 0.3s ease-in-out 0.9s forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50">
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm">
+      <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <span class="flex items-center text-xs md:text-sm">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            070 3757 8907
+          </span>
+        </div>
+        <div class="text-xs md:text-sm">
+          ✅ Order Confirmed
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="flex justify-center items-center gap-4">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-500 p-2 rounded-xl transform group-hover:rotate-12 transition-transform duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Calex</h1>
+              <p class="text-xs text-gray-500 -mt-1">Electronics Hub</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUCCESS CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
+      <!-- Animated Checkmark -->
+      <div class="mb-8">
+        <svg class="mx-auto" width="120" height="120" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="#10b981" stroke-width="2"/>
+          <path class="checkmark-check" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+        Order Confirmed!
+      </h1>
+      
+      <p class="text-lg text-gray-600 mb-8">
+        Thank you for your purchase. Your order has been received and is being processed.
+      </p>
+
+      <div class="bg-blue-50 rounded-xl p-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Order Number</p>
+            <p class="font-bold text-gray-900" id="orderNumber">Loading...</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Order Date</p>
+            <p class="font-bold text-gray-900" id="orderDate">-</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Total Amount</p>
+            <p class="font-bold text-blue-600 text-xl" id="orderTotal">-</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Payment Status</p>
+            <p class="font-bold text-green-600">Paid</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-left mb-8">
+        <h3 class="font-bold text-lg text-gray-900 mb-4">What's Next?</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Order Confirmation Email</p>
+              <p class="text-sm text-gray-600">We've sent a confirmation email with your order details.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Order Processing</p>
+              <p class="text-sm text-gray-600">Your order is being prepared for shipment.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Delivery</p>
+              <p class="text-sm text-gray-600">Estimated delivery: 3-5 business days</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="index.html" class="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-600 transition transform hover:scale-105">
+          Continue Shopping
+        </a>
+        <a href="index.html#footer" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+          Contact Support
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get payment intent from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const paymentIntent = urlParams.get('payment_intent');
+      
+      // Set order details
+      document.getElementById('orderNumber').textContent = paymentIntent ? `#${paymentIntent.slice(-8).toUpperCase()}` : '#ORDER123';
+      document.getElementById('orderDate').textContent = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      // Get total from cart before clearing
+      const total = cart.getTotal();
+      const shipping = total >= 10000 ? 0 : 2000;
+      document.getElementById('orderTotal').textContent = `₦${(total + shipping).toLocaleString()}`;
+      
+      // Clear cart
+      cart.clear();
+    });
+  </script>
+</body>
+</html>
