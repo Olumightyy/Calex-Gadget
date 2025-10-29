@@ -54,13 +54,13 @@ async function initializeStripe() {
   }
 
   if (!stripeKey) {
+    console.error('Stripe public key not found.');
     showToast('Payment system not configured. Please contact support.', 'error');
     return;
   }
 
+  console.log('Using Stripe public key:', stripeKey);
   stripe = Stripe(stripeKey);
-
-  const items = cart.getItems();
 
   try {
     // Create payment intent with cart items for server-side validation
