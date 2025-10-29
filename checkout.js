@@ -60,8 +60,6 @@ async function initializeStripe() {
 
   stripe = Stripe(stripeKey);
 
-  const items = cart.getItems();
-
   try {
     // Create payment intent with cart items for server-side validation
     const response = await fetch('/api/create-payment-intent', {
