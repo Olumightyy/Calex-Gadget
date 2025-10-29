@@ -436,16 +436,21 @@ setupAutocomplete("searchInputMobile", "autocompleteListMobile");
 // ADD TO CART FUNCTIONALITY
 // ===================================
 
-let cartCount = 0;
-
 document.addEventListener("click", function (e) {
   if (e.target.closest(".add-to-cart-btn")) {
     const productCard = e.target.closest(".product-card-enhanced");
-    const productName = productCard.querySelector("h4").textContent;
+    const productName = productCard.querySelector("h4").textContent.trim();
+    const priceText = productCard.querySelector("p.text-2xl").textContent.trim();
+    const price = parseInt(priceText.replace(/[₦,]/g, ''));
+    const image = productCard.querySelector("img").src;
     
-    cartCount++;
-    document.getElementById("cartBadge").textContent = cartCount;
+    const product = {
+      name: productName,
+      price: price,
+      image: image
+    };
     
+    cart.addItem(product);
     showToast(`${productName} added to cart!`, "success");
   }
 });
