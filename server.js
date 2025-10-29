@@ -7,6 +7,18 @@ const path = require('path');
 const app = express();
 const PORT = 5000;
 
+// Product catalog - server-side source of truth for pricing
+const PRODUCTS = {
+  'Wireless Headphones': { price: 20000, name: 'Wireless Headphones' },
+  'Macbook 13 Air': { price: 1370000, name: 'Macbook 13 Air' },
+  'Dell Desktop Computer': { price: 400000, name: 'Dell Desktop Computer' },
+  'Gaming Laptop': { price: 620000, name: 'Gaming Laptop' },
+  'iPhone Pro Max': { price: 510000, name: 'iPhone Pro Max' },
+  'Nikon Professional Camera': { price: 700000, name: 'Nikon Professional Camera' },
+  'Power Bank': { price: 19000, name: 'Power Bank' },
+  'Camera Tripod Stand': { price: 40000, name: 'Camera Tripod Stand' }
+};
+
 // Initialize Stripe
 if (!process.env.STRIPE_SECRET_KEY) {
   console.warn('⚠️  Warning: STRIPE_SECRET_KEY not found. Payment processing will not work.');
@@ -49,23 +61,66 @@ app.post('/api/create-payment-intent', async (req, res) => {
       return res.status(500).json({ error: 'Stripe not configured' });
     }
 
-    const { amount, currency = 'ngn' } = req.body;
+    const { items, currency = 'ngn' } = req.body;
 
-    if (!amount || amount <= 0) {
-      return res.status(400).json({ error: 'Invalid amount' });
+    // Validate items
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      console.warn('Payment attempt with no items');
+      return res.status(400).json({ error: 'Cart is empty' });
     }
 
+    // Calculate total from server-side prices
+    let calculatedTotal = 0;
+    const invalidItems = [];
+
+    for (const item of items) {
+      const product = PRODUCTS[item.name];
+      
+      if (!product) {
+        invalidItems.push(item.name);
+        continue;
+      }
+
+      if (!item.quantity || item.quantity < 1) {
+        return res.status(400).json({ error: `Invalid quantity for ${item.name}` });
+      }
+
+      // Use server-side price only
+      calculatedTotal += product.price * item.quantity;
+    }
+
+    if (invalidItems.length > 0) {
+      console.warn('Payment attempt with invalid items:', invalidItems);
+      return res.status(400).json({ error: `Invalid products: ${invalidItems.join(', ')}` });
+    }
+
+    // Add shipping cost
+    const shipping = calculatedTotal >= 10000 ? 0 : 2000;
+    const finalTotal = calculatedTotal + shipping;
+
+    if (finalTotal <= 0) {
+      return res.status(400).json({ error: 'Invalid total amount' });
+    }
+
+    console.log(`Creating payment intent for ₦${finalTotal} (${items.length} items)`);
+
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), // Convert to kobo (smallest currency unit)
+      amount: Math.round(finalTotal * 100), // Convert to kobo (smallest currency unit)
       currency: currency,
       automatic_payment_methods: {
         enabled: true,
       },
+      metadata: {
+        itemCount: items.length,
+        subtotal: calculatedTotal,
+        shipping: shipping
+      }
     });
 
     res.json({ 
       clientSecret: paymentIntent.client_secret,
-      paymentIntentId: paymentIntent.id
+      paymentIntentId: paymentIntent.id,
+      amount: finalTotal
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);

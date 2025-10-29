@@ -60,19 +60,20 @@ async function initializeStripe() {
 
   stripe = Stripe(stripeKey);
 
-  const subtotal = cart.getTotal();
-  const shipping = subtotal >= 10000 ? 0 : 2000;
-  const total = subtotal + shipping;
+  const items = cart.getItems();
 
   try {
-    // Create payment intent
+    // Create payment intent with cart items for server-side validation
     const response = await fetch('/api/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        amount: total,
+        items: items.map(item => ({
+          name: item.name,
+          quantity: item.quantity
+        })),
         currency: 'ngn'
       }),
     });
