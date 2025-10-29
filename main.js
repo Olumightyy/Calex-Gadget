@@ -61,7 +61,7 @@ scrollToTopBtn.addEventListener("click", function () {
 // ===================================
 
 function filterProducts(searchValue) {
-  const cards = document.querySelectorAll(".product-card");
+  const cards = document.querySelectorAll(".product-card-enhanced");
   let visibleCount = 0;
   
   cards.forEach(card => {
@@ -439,21 +439,14 @@ setupAutocomplete("searchInputMobile", "autocompleteListMobile");
 let cartCount = 0;
 
 document.addEventListener("click", function (e) {
-  if (e.target.closest(".btn-add-cart")) {
-    const productCard = e.target.closest(".product-card");
-    const productName = productCard.querySelector(".product-name").textContent;
+  if (e.target.closest(".add-to-cart-btn")) {
+    const productCard = e.target.closest(".product-card-enhanced");
+    const productName = productCard.querySelector("h4").textContent;
     
     cartCount++;
-    document.querySelector(".cart-badge").textContent = cartCount;
+    document.getElementById("cartBadge").textContent = cartCount;
     
     showToast(`${productName} added to cart!`, "success");
-    
-    // Animate cart icon
-    const cartBtn = document.querySelector(".cart-btn");
-    cartBtn.style.transform = "scale(1.2)";
-    setTimeout(() => {
-      cartBtn.style.transform = "scale(1)";
-    }, 200);
   }
 });
 
@@ -482,13 +475,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // NEWSLETTER SUBSCRIPTION
 // ===================================
 
-document.querySelector(".newsletter-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const email = this.querySelector("input[type='email']").value;
-  
-  showToast(`Thank you for subscribing with ${email}!`, "success");
-  this.reset();
-});
+const newsletterForm = document.querySelector(".newsletter-form");
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const email = this.querySelector("input[type='email']").value;
+    
+    showToast(`Thank you for subscribing with ${email}!`, "success");
+    this.reset();
+  });
+}
 
 // ===================================
 // PERFORMANCE: Lazy Loading Images
