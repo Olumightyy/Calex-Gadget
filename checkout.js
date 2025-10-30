@@ -33,17 +33,19 @@ async function initializeStripe() {
     return;
   }
 
-  const stripeKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
-
-  if (!stripeKey) {
-    showToast('Payment system not configured. Please contact support.', 'error');
-    console.error('Stripe public key is not set. Make sure to set VITE_STRIPE_PUBLIC_KEY in your environment.');
-    return;
-  }
-
-  stripe = Stripe(stripeKey);
-
   try {
+    // Fetch Stripe publishable key from server
+    const configResponse = await fetch('/api/config');
+    const { publishableKey } = await configResponse.json();
+
+    if (!publishableKey) {
+      showToast('Payment system not configured. Please contact support.', 'error');
+      console.error('Stripe public key is not configured on the server.');
+      return;
+    }
+
+    stripe = Stripe(publishableKey);
+
     // Create payment intent with cart items for server-side validation
     const response = await fetch('/api/create-payment-intent', {
       method: 'POST',
@@ -59,12 +61,14 @@ async function initializeStripe() {
       }),
     });
 
-    const { clientSecret, error } = await response.json();
+    const data = await response.json();
 
-    if (error) {
-      showToast(error, 'error');
+    if (data.error) {
+      showToast(data.error, 'error');
       return;
     }
+
+    const { clientSecret } = data;
 
     // Initialize Stripe Elements
     elements = stripe.elements({ clientSecret });

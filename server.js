@@ -49,6 +49,13 @@ app.use(express.static('.', {
 
 // API Routes
 
+// Get Stripe publishable key
+app.get('/api/config', (req, res) => {
+  res.json({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || ''
+  });
+});
+
 // Create payment intent
 app.post('/api/create-payment-intent', async (req, res) => {
   try {
