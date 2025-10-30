@@ -148,75 +148,64 @@
     </div>
   </header>
 
-  <div class="flex">
-    <!-- SIDEBAR -->
-    <aside class="hidden md:block w-64 bg-white border-r border-gray-200 sticky top-0 h-screen overflow-y-auto">
-      <div class="p-4">
-        <h2 class="flex items-center gap-2 text-lg font-bold text-gray-800 mb-4 pb-3 border-b-2 border-blue-500">
-          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          Categories
-        </h2>
-        <ul class="space-y-1">
-          <li><a href="#" class="sidebar-link">🆕 New Arrivals</a></li>
-          <li><a href="#" class="sidebar-link">📱 Mobile Phones</a></li>
-          <li><a href="#" class="sidebar-link">💻 Tablets</a></li>
-          <li><a href="#" class="sidebar-link">🖥️ Laptops & Computers</a></li>
-          <li><a href="#" class="sidebar-link">⌚ Smart Watches</a></li>
-          <li><a href="#" class="sidebar-link">🎧 Accessories</a></li>
-          <li><a href="#" class="sidebar-link">🎮 Games & Consoles</a></li>
-          <li><a href="#" class="sidebar-link">⚡ Electronics</a></li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="flex-1">
-      <!-- BANNER SLIDER -->
-      <section class="relative w-full overflow-hidden bg-gray-900">
-        <div id="bannerSlider" class="relative h-64 sm:h-80 md:h-96">
+  <!-- MAIN CONTENT -->
+  <main class="w-full">
+    <!-- BANNER SLIDER -->
+    <section class="relative w-full overflow-hidden bg-gray-900">
+      <div id="bannerSlider" class="relative h-96 sm:h-[450px] md:h-[500px] lg:h-[600px]">
           <!-- Slides -->
           <div class="banner-slide active">
             <img src="/images/Microsoft Surface Laptop 3_ A review on one of the….jpg" alt="Mega Sale" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center justify-center">
-              <div class="text-center px-4 animate-fade-in">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Mega Gadget Sale</h2>
-                <p class="text-lg md:text-2xl text-blue-100 mb-6 drop-shadow">Up to 50% off on selected gadgets!</p>
-                <a href="#products" class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">Shop Deals</a>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+              <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
+                <div class="max-w-2xl animate-fade-in">
+                  <span class="inline-block px-4 py-2 bg-red-500 text-white rounded-full text-sm font-bold mb-4">Limited Time Offer</span>
+                  <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Mega Gadget Sale</h2>
+                  <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">Save up to 50% on premium electronics and gadgets</p>
+                  <a href="#products" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-50">Shop Now</a>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="banner-slide">
             <img src="/images/742a2d455eebf6a47e289751ea471e73.jpg" alt="New Arrivals" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center justify-center">
-              <div class="text-center px-4">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">New Arrivals</h2>
-                <p class="text-lg md:text-2xl text-blue-100 mb-6 drop-shadow">Discover the latest tech trends</p>
-                <a href="#products" class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">Explore Now</a>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+              <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
+                <div class="max-w-2xl">
+                  <span class="inline-block px-4 py-2 bg-green-500 text-white rounded-full text-sm font-bold mb-4">Just Arrived</span>
+                  <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Latest Tech</h2>
+                  <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">Discover cutting-edge electronics and innovations</p>
+                  <a href="#products" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-50">Explore Collection</a>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="banner-slide">
             <img src="/images/2120bd33b2cb7e8b2d3cc7d3783c01e5.jpg" alt="Free Shipping" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center justify-center">
-              <div class="text-center px-4">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Free Shipping</h2>
-                <p class="text-lg md:text-2xl text-blue-100 mb-6 drop-shadow">On all orders over ₦10,000</p>
-                <a href="#products" class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">Start Shopping</a>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+              <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
+                <div class="max-w-2xl">
+                  <span class="inline-block px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-bold mb-4">Free Delivery</span>
+                  <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Nationwide Shipping</h2>
+                  <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">Free shipping on all orders over ₦10,000</p>
+                  <a href="#products" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-50">Start Shopping</a>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="banner-slide">
             <img src="/images/64eb0407c26eabbf62e03b6eeffdbfdf.jpg" alt="Premium Quality" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center justify-center">
-              <div class="text-center px-4">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Premium Quality</h2>
-                <p class="text-lg md:text-2xl text-blue-100 mb-6 drop-shadow">Authentic products guaranteed</p>
-                <a href="#products" class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">Shop Now</a>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+              <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
+                <div class="max-w-2xl">
+                  <span class="inline-block px-4 py-2 bg-purple-500 text-white rounded-full text-sm font-bold mb-4">100% Authentic</span>
+                  <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Premium Quality</h2>
+                  <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">Genuine products with official warranty guarantee</p>
+                  <a href="#products" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:bg-blue-50">Shop Collection</a>
+                </div>
               </div>
             </div>
           </div>
@@ -243,52 +232,53 @@
         </div>
       </section>
 
-      <!-- FEATURE HIGHLIGHTS -->
-      <section class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="text-center p-6 rounded-xl hover:shadow-lg transition group">
-              <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Free Shipping</h3>
-              <p class="text-gray-600">On orders over ₦10,000</p>
+    <!-- FEATURE HIGHLIGHTS -->
+    <section class="bg-white py-16 border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-white hover:shadow-xl transition-all duration-300 group border border-blue-100">
+            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+              </svg>
             </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Free Shipping</h3>
+            <p class="text-gray-600 leading-relaxed">On orders over ₦10,000</p>
+          </div>
 
-            <div class="text-center p-6 rounded-xl hover:shadow-lg transition group">
-              <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Secure Payment</h3>
-              <p class="text-gray-600">100% secure transactions</p>
+          <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-white hover:shadow-xl transition-all duration-300 group border border-green-100">
+            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
             </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Secure Payment</h3>
+            <p class="text-gray-600 leading-relaxed">100% secure transactions</p>
+          </div>
 
-            <div class="text-center p-6 rounded-xl hover:shadow-lg transition group">
-              <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">24/7 Support</h3>
-              <p class="text-gray-600">Always here to help</p>
+          <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-white hover:shadow-xl transition-all duration-300 group border border-purple-100">
+            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
             </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+            <p class="text-gray-600 leading-relaxed">Always here to help</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- PRODUCTS SECTION -->
-      <section id="products" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="text-center mb-12">
-            <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Best Selling Products</h3>
-            <p class="text-lg text-gray-600">Discover our most popular electronics and gadgets</p>
-          </div>
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">Featured Collection</span>
+          <h3 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Best Selling Products</h3>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our most popular electronics and gadgets, carefully selected for quality and value</p>
+        </div>
 
-          <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <!-- Product 1 -->
             <div class="product-card-enhanced" data-name="Wireless Headphones">
               <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">SALE</div>
