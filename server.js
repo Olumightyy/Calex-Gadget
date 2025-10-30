@@ -38,10 +38,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files
-app.use(express.static('.', {
-  setHeaders: (res, path) => {
-    if (path.endsWith('.html')) {
+// Serve static files with absolute path
+app.use(express.static(path.join(__dirname), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     }
   }
